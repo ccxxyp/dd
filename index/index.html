@@ -1,0 +1,54 @@
+<!--
+  Generated template for the IndexPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>首页</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <!-- 轮播图 -->
+  <ion-slides *ngIf="llist.length>0" autoplay="2000" loop pager style="height:180px">
+    <ion-slide *ngFor="let item of llist">
+      <img style="height:180px" src="../../assets/{{item.img}}">
+    </ion-slide>
+  </ion-slides>
+  <!-- 九宫格 -->
+  <ion-list>
+    <ion-item *ngFor="let item of glist" style="display:inline-block;width:33%;border-top:0" (click)="classify()">
+      <img src="../../assets/{{item.img}}" style="height:120px">
+    </ion-item>
+  </ion-list>
+  <!-- 卡片 -->
+  <h3 style="text-align:center;color:orange;">今日秒杀</h3>
+  <ion-scroll style="height:350px;white-space:nowrap;" scrollX>
+    <ion-card *ngFor="let item of mlist" style="display:inline-block">
+      <ion-card-header>
+        <img style="height:180px" src="../../assets/{{item.img}}">
+      </ion-card-header>
+      <ion-card-content >
+        <p>{{item.detail}}</p>
+        <p style="color:#f00">¥:{{item.price}}</p>
+        <p style="color:#ccc;text-decoration:line-through;">¥:{{item.cost}}</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-scroll>
+  <!--栅格布局 -->
+  <h3 style="text-align:center;color:deepskyblue">可能喜欢</h3>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6 *ngFor="let item of rlist" style="border:1px solid #ccc">
+        <img src="../../assets/{{item.img}}">
+        <p>{{item.detail}}</p>
+        <p style="color:#f00">{{item.price}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
